@@ -482,7 +482,14 @@
     const tel = document.getElementById('tel').value;
     const servico = document.getElementById('servico').value;
     const msg = document.getElementById('msg').value;
-    const text = `Olá! Sou ${nome} (${tel}).%0AServiço: ${servico}%0A%0A${msg}`;
+    
+    // Format message with clear labels and separators
+    const text = `*Novo Orçamento Solicitado*%0A%0A` +
+                 `👤 *Nome:* ${nome}%0A` +
+                 `📞 *Telefone:* ${tel}%0A` +
+                 `🛠 *Serviço:* ${servico}%0A%0A` +
+                 `📝 *Descrição:*%0A${msg}`;
+                 
     document.getElementById('formMsg').classList.add('show');
     setTimeout(() => { window.open(`https://wa.me/5521974701965?text=${text}`, '_blank'); }, 600);
     return false;
