@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VoltPro Elétrica · Energia para o que realmente importa</title>
+<meta name="description" content="Eletricista residencial especializado em São João de Meriti. Serviços de instalações, manutenções e reparos elétricos com qualidade e segurança." />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "P Elétrica",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "São João de Meriti",
+    "addressRegion": "RJ"
+  },
+  "description": "Eletricista residencial especializado em São João de Meriti. Serviços de instalações, manutenções e reparos elétricos com qualidade e segurança."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --slate:#2c3e50;
+    --ink:#1A1A1A;
+    --orange:#F27C04;
+    --navy:#072644;
+    --muted:#5b6b7a;
+    --line:rgba(7,38,68,.08);
+    --shadow:0 20px 60px -20px rgba(7,38,68,.35);
+    --shadow-orange:0 18px 40px -12px rgba(242,124,4,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  /* Layout for containers - Abstract Design */
+  .hero-img{display:flex;align-items:center;justify-content:center;min-height:300px;background:linear-gradient(135deg,var(--navy),var(--slate));border-radius:20px;position:relative;overflow:hidden}
+  .hero-img::after{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(242,124,4,.15) 0%,transparent 70%)}
+  .service-img{display:block;height:120px;background:linear-gradient(135deg,var(--navy),var(--slate));position:relative;overflow:hidden}
+  .service-img::after{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(242,124,4,.1) 0%,transparent 70%)}
+  .why-img{display:none} 
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:.3s}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);font-size:1.25rem}
+  .logo-mark{width:38px;height:38px;border-radius:10px;background:var(--navy);display:grid;place-items:center;box-shadow:var(--shadow-orange)}
+  .logo-mark svg{width:22px;height:22px;color:var(--orange)}
+  nav ul{display:flex;gap:32px;list-style:none}
+  nav a{font-weight:500;color:var(--slate);font-size:.95rem;position:relative;transition:.2s}
+  nav a:hover{color:var(--orange)}
+  nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--orange);transition:.3s}
+  nav a:hover::after{width:100%}
+  .cta-phone{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:11px 20px;border-radius:999px;font-weight:600;font-size:.92rem;box-shadow:var(--shadow-orange);transition:.25s}
+  .cta-phone:hover{transform:translateY(-2px);background:#d96b00}
+  .burger{display:none;background:none;border:none;cursor:pointer;color:var(--navy)}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,#0a3158 60%,var(--slate) 100%);color:var(--white);padding:120px 0 80px}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 30%,rgba(242,124,4,.25),transparent 50%),radial-gradient(circle at 10% 80%,rgba(242,124,4,.12),transparent 40%)}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(242,124,4,.15);border:1px solid rgba(242,124,4,.35);border-radius:999px;font-size:.85rem;font-weight:600;color:var(--orange);margin-bottom:24px}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(242,124,4,.25);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .hero h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px}
+  .hero h1 span{color:var(--orange);position:relative;display:inline-block}
+  .hero h1 span::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;background:rgba(242,124,4,.25);z-index:-1;border-radius:4px}
+  .hero p.lead{font-size:1.15rem;color:rgba(255,255,255,.8);margin-bottom:36px;max-width:520px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:12px;font-weight:600;font-size:1rem;cursor:pointer;border:none;transition:.25s;font-family:inherit}
+  .btn-primary{background:var(--orange);color:var(--white);box-shadow:var(--shadow-orange)}
+  .btn-primary:hover{transform:translateY(-3px);background:#d96b00}
+  .btn-ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:var(--white)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:520px}
+  .stat .num{font-size:2rem;font-weight:800;color:var(--orange);line-height:1}
+  .stat .lbl{font-size:.85rem;color:rgba(255,255,255,.65);margin-top:6px}
+
+  .hero-img{position:relative}
+  .hero-img img{border-radius:20px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);aspect-ratio:1/1;object-fit:cover}
+  .hero-card{position:absolute;background:var(--white);color:var(--ink);padding:18px 22px;border-radius:14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:14px}
+  .hero-card.c1{bottom:30px;left:-30px;animation:float 4s ease-in-out infinite}
+  .hero-card.c2{top:30px;right:-20px;animation:float 4s ease-in-out infinite reverse}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .hero-card .ic{width:42px;height:42px;border-radius:10px;background:rgba(242,124,4,.12);display:grid;place-items:center;color:var(--orange);flex-shrink:0}
+  .hero-card .t{font-weight:700;font-size:.9rem;color:var(--navy)}
+  .hero-card .s{font-size:.78rem;color:var(--muted)}
+
+  /* SECTION HEADER */
+  section{padding:100px 0}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 60px}
+  .eyebrow{display:inline-block;font-size:.85rem;font-weight:700;color:var(--orange);letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px}
+  .section-head h2{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.15;margin-bottom:16px}
+  .section-head p{color:var(--muted);font-size:1.05rem}
+
+  /* SERVICES */
+  .services{background:#f7f9fc}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .service{background:var(--white);border-radius:18px;overflow:hidden;border:1px solid var(--line);transition:.35s cubic-bezier(.2,.8,.2,1);cursor:pointer}
+  .service:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent}
+
+  .service-img{height:220px;overflow:hidden;position:relative}
+  .service-img img{width:100%;height:100%;object-fit:cover;transition:.6s}
+  .service:hover .service-img img{transform:scale(1.08)}
+  .service-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(7,38,68,.45),transparent 50%)}
+  .service-body{padding:28px}
+  .service-icon{width:50px;height:50px;border-radius:12px;background:var(--orange);color:var(--white);display:grid;place-items:center;margin-bottom:18px;box-shadow:var(--shadow-orange)}
+  .service h3{font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .service p{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+  .service .link{color:var(--orange);font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:6px;transition:.2s}
+  .service:hover .link{gap:12px}
+
+  /* WHY US */
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .why-img{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+  .why-img img{aspect-ratio:4/5;object-fit:cover}
+  .why-stamp{position:absolute;bottom:24px;left:24px;background:var(--orange);color:var(--white);padding:18px 22px;border-radius:14px;box-shadow:var(--shadow-orange)}
+  .why-stamp .n{font-size:2rem;font-weight:800;line-height:1}
+  .why-stamp .l{font-size:.8rem;opacity:.95;margin-top:4px}
+  .features{display:flex;flex-direction:column;gap:24px;margin-top:36px}
+  .feature{display:flex;gap:18px;align-items:flex-start;padding:20px;border-radius:14px;background:#f7f9fc;border:1px solid var(--line);transition:.25s}
+  .feature:hover{background:var(--white);box-shadow:var(--shadow);transform:translateX(6px)}
+  .feature .fic{width:48px;height:48px;border-radius:12px;background:var(--navy);color:var(--orange);display:grid;place-items:center;flex-shrink:0}
+  .feature h4{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .feature p{color:var(--muted);font-size:.92rem}
+
+  /* CTA BANNER */
+  .cta-banner{background:linear-gradient(135deg,var(--navy),var(--slate));color:var(--white);padding:60px 0;position:relative;overflow:hidden}
+  .cta-banner::before{content:"";position:absolute;right:-100px;top:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(242,124,4,.3),transparent 70%)}
+  .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;position:relative}
+  .cta-inner h3{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800}
+  .cta-inner p{color:rgba(255,255,255,.75);margin-top:6px}
+
+  /* TESTIMONIALS */
+  .testimonials{background:#f7f9fc}
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .test{background:var(--white);padding:32px;border-radius:18px;border:1px solid var(--line);position:relative}
+  .test .stars{color:var(--orange);font-size:1.1rem;margin-bottom:14px}
+  .test p{color:var(--slate);font-style:italic;margin-bottom:20px}
+  .test .who{display:flex;align-items:center;gap:12px}
+  .test .avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--orange);display:grid;place-items:center;font-weight:700}
+  .test .name{font-weight:700;color:var(--navy);font-size:.95rem}
+  .test .role{font-size:.82rem;color:var(--muted)}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px}
+  .contact-info h3{font-size:1.8rem;font-weight:800;color:var(--navy);margin-bottom:16px}
+  .contact-info > p{color:var(--muted);margin-bottom:32px}
+  .contact-item{display:flex;gap:16px;align-items:flex-start;margin-bottom:22px;padding:18px;border-radius:14px;border:1px solid var(--line);transition:.25s;cursor:pointer}
+  .contact-item:hover{border-color:var(--orange);background:#fff8f0;transform:translateX(4px)}
+  .contact-item .ci{width:46px;height:46px;border-radius:12px;background:var(--orange);color:var(--white);display:grid;place-items:center;flex-shrink:0}
+  .contact-item h4{font-size:.95rem;color:var(--muted);font-weight:500;margin-bottom:2px}
+  .contact-item .v{font-weight:700;color:var(--navy);font-size:1.05rem}
+  form{background:#f7f9fc;padding:36px;border-radius:18px;border:1px solid var(--line)}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.88rem;font-weight:600;color:var(--navy);margin-bottom:8px}
+  .field input,.field textarea,.field select{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem;background:var(--white);transition:.2s;color:var(--ink)}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(242,124,4,.12)}
+  .field textarea{resize:vertical;min-height:110px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .submit{width:100%;justify-content:center}
+  .form-msg{display:none;padding:14px;border-radius:10px;background:rgba(242,124,4,.12);color:var(--orange);font-weight:600;margin-top:14px;text-align:center}
+  .form-msg.show{display:block;animation:pop .4s ease}
+  @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 0 24px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;margin-bottom:40px}
+  footer .logo{color:var(--white)}
+  footer h5{color:var(--white);font-size:1rem;font-weight:700;margin-bottom:18px}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  footer ul a{font-size:.92rem;transition:.2s}
+  footer ul a:hover{color:var(--orange)}
+  .foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:.85rem}
+
+  /* WHATSAPP FLOAT */
+  .wa-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.5);z-index:40;transition:.3s;animation:wabounce 2s infinite}
+  .wa-float:hover{transform:scale(1.1)}
+  @keyframes wabounce{0%,100%{box-shadow:0 10px 30px rgba(37,211,102,.5)}50%{box-shadow:0 10px 30px rgba(37,211,102,.9),0 0 0 12px rgba(37,211,102,.15)}}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    nav ul,.cta-phone{display:none}
+    .burger{display:block}
+    .hero{padding:110px 0 60px;min-height:auto}
+    .hero-grid,.why-grid,.contact-grid,.services-grid,.test-grid,.foot-grid{grid-template-columns:1fr;gap:40px}
+    .form-row{grid-template-columns:1fr}
+    .hero-card.c1{left:10px}
+    .hero-card.c2{right:10px}
+    section{padding:70px 0}
+    .stats{max-width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5h6L9 22l9.5-12h-6L13 2z"/></svg></span>
+      <span style="color:var(--orange)">P</span><span style="color:var(--navy)">Elétrica</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a href="tel:+5521974701965" class="cta-phone">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (21) 97470-1965
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge"><span class="dot"></span> Eletricista profissional · São João de Meriti</span>
+      <h1>Energia para o que <span>realmente importa</span></h1>
+      <p class="lead">Soluções elétricas seguras, eficientes e feitas para o seu dia a dia. Atendimento residencial especializado com quem entende do assunto.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5521974701965" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2-1c-.3-.1-.5-.2-.7.1l-.9 1.1c-.2.2-.4.3-.7.1-1-.5-1.9-1.1-2.7-2-.2-.2-.2-.4 0-.6l.7-.9c.2-.2.2-.5.1-.7l-.9-2.1c-.1-.3-.4-.4-.7-.4-1.2 0-2.2 1-2.2 2.2 0 3.6 5.5 9.1 9.1 9.1 1.2 0 2.2-1 2.2-2.2.1-.3-.1-.6-.3-.7zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2z"/></svg>
+          Solicitar orçamento
+        </a>
+        <a href="#servicos" class="btn btn-ghost">Ver serviços →</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">Técnica</div><div class="lbl">Certificada</div></div>
+        <div class="stat"><div class="num">Atendimento</div><div class="lbl">Personalizado</div></div>
+        <div class="stat"><div class="num">Segurança</div><div class="lbl">Total</div></div>
+      </div>
+    </div>
+    <div class="hero-img">
+      
+      <div class="hero-card c1">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><div class="t">100% Seguro</div><div class="s">Normas NBR 5410</div></div>
+      </div>
+      <div class="hero-card c2">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="t">Atendimento Rápido</div><div class="s">Resposta em minutos</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Nossos Serviços</span>
+      <h2>Soluções elétricas completas para sua casa</h2>
+      <p>Instalações, manutenções e reparos com qualidade, segurança e atendimento humanizado.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service reveal">
+        <div class="service-img"></div>
+        <div class="service-body">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v8"/><path d="M5 10h14v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V10z"/></svg></div>
+          <h3>Instalações Elétricas</h3>
+          <p>Tomadas, interruptores, disjuntores e quadros — feitos do jeito certo, na primeira vez.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <div class="service-img"></div>
+        <div class="service-body">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <h3>Manutenção & Reparos</h3>
+          <p>Diagnóstico preciso de curtos, oscilações e falhas. Sua segurança em primeiro lugar.</p>
+        </div>
+      </article>
+      <article class="service reveal">
+        <div class="service-img"></div>
+        <div class="service-body">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="M5 10h14v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V10z"/></svg></div>
+          <h3>Projetos Residenciais</h3>
+          <p>Planejamento e execução de novos projetos elétricos para sua construção ou reforma.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Por que a P Elétrica</span>
+      <h2 style="font-size:clamp(2rem,3.5vw,2.6rem);font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.15;margin-bottom:16px">Conte com quem entende do assunto</h2>
+      <p style="color:var(--muted)">Combinamos técnica, segurança e atendimento próximo para entregar serviços que realmente duram. Cada instalação é tratada como se fosse na nossa própria casa.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div><h4>Segurança em primeiro lugar</h4><p>Trabalho dentro das normas NBR, com equipamentos de proteção e materiais certificados.</p></div>
+        </div>
+        <div class="feature">
+          <div class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div><h4>Serviços de qualidade</h4><p>Atendimento residencial especializado, do diagnóstico ao acabamento perfeito.</p></div>
+        </div>
+        <div class="feature">
+          <div class="fic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div><h4>Atendimento humano</h4><p>Resposta rápida, orçamento transparente e acompanhamento do início ao fim.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container cta-inner">
+    <div>
+      <h3>Deseja um orçamento sem compromisso?</h3>
+      <p>Atendimento profissional em São João de Meriti.</p>
+    </div>
+    <a href="https://wa.me/5521974701965" class="btn btn-primary">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Fale com a gente</span>
+      <h3>Vamos resolver agora</h3>
+      <p>Solicite seu orçamento sem compromisso. Respondemos em poucos minutos.</p>
+      <a href="tel:+5521974701965" class="contact-item">
+        <div class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><h4>Telefone</h4><div class="v">(21) 97470-1965</div></div>
+      </a>
+      <a href="https://wa.me/5521974701965" class="contact-item">
+        <div class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2-1c-.3-.1-.5-.2-.7.1l-.9 1.1c-.2.2-.4.3-.7.1-1-.5-1.9-1.1-2.7-2-.2-.2-.2-.4 0-.6l.7-.9c.2-.2.2-.5.1-.7l-.9-2.1c-.1-.3-.4-.4-.7-.4-1.2 0-2.2 1-2.2 2.2 0 3.6 5.5 9.1 9.1 9.1 1.2 0 2.2-1 2.2-2.2.1-.3-.1-.6-.3-.7z"/></svg></div>
+        <div><h4>WhatsApp</h4><div class="v">Atendimento 24h</div></div>
+      </a>
+      <div class="contact-item">
+        <div class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><h4>Região de atendimento</h4><div class="v">São João de Meriti e região</div></div>
+      </div>
+    </div>
+    <form id="contactForm" class="reveal" onsubmit="return submitForm(event)">
+      <div class="form-row">
+        <div class="field"><label for="nome">Nome</label><input id="nome" type="text" required placeholder="Seu nome" /></div>
+        <div class="field"><label for="tel">Telefone</label><input id="tel" type="tel" required placeholder="(21) 9 0000-0000" /></div>
+      </div>
+      <div class="field"><label for="servico">Tipo de serviço</label>
+        <select id="servico" required>
+          <option value="">Selecione...</option>
+          <option>Instalação elétrica</option>
+          <option>Manutenção / reparo</option>
+          <option>Projetos Residenciais</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="field"><label for="msg">Descreva sua necessidade</label><textarea id="msg" required placeholder="Conte um pouco do que precisa..."></textarea></div>
+      <button type="submit" class="btn btn-primary submit">Enviar pelo WhatsApp →</button>
+      <div class="form-msg" id="formMsg">✓ Redirecionando para o WhatsApp...</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="#" class="logo">
+          <span class="logo-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5h6L9 22l9.5-12h-6L13 2z"/></svg></span>
+          <span style="color:var(--orange)">P</span><span style="color:var(--white)">Elétrica</span>
+        </a>
+        <p style="margin-top:16px;max-width:360px">Energia para o que realmente importa. Soluções elétricas seguras, eficientes e feitas para o seu dia a dia.</p>
+      </div>
+      <div>
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contato</h5>
+        <ul>
+          <li><a href="tel:+5521974701965">(21) 97470-1965</a></li>
+          <li><a href="https://wa.me/5521974701965">WhatsApp</a></li>
+          <li>São João de Meriti · RJ</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">© <span id="yr"></span> P Elétrica · Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5521974701965" class="wa-float" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2-1c-.3-.1-.5-.2-.7.1l-.9 1.1c-.2.2-.4.3-.7.1-1-.5-1.9-1.1-2.7-2-.2-.2-.2-.4 0-.6l.7-.9c.2-.2.2-.5.1-.7l-.9-2.1c-.1-.3-.4-.4-.7-.4-1.2 0-2.2 1-2.2 2.2 0 3.6 5.5 9.1 9.1 9.1 1.2 0 2.2-1 2.2-2.2.1-.3-.1-.6-.3-.7zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2z"/></svg>
+</a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Nav shadow on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) nav.style.boxShadow = '0 4px 24px rgba(7,38,68,.08)';
+    else nav.style.boxShadow = 'none';
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Mobile menu toggle (simple)
+  document.getElementById('burger').addEventListener('click', () => {
+    const ul = document.querySelector('nav ul');
+    const open = ul.style.display === 'flex';
+    ul.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:#fff;padding:20px 24px;gap:16px;border-bottom:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.06)';
+  });
+
+  // Form -> WhatsApp
+  function submitForm(e) {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value;
+    const tel = document.getElementById('tel').value;
+    const servico = document.getElementById('servico').value;
+    const msg = document.getElementById('msg').value;
+    const text = `Olá! Sou ${nome} (${tel}).%0AServiço: ${servico}%0A%0A${msg}`;
+    document.getElementById('formMsg').classList.add('show');
+    setTimeout(() => { window.open(`https://wa.me/5521974701965?text=${text}`, '_blank'); }, 600);
+    return false;
+  }
+</script>
+</body>
+</html>
