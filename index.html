@@ -398,7 +398,7 @@
     <form id="contactForm" class="reveal" onsubmit="return submitForm(event)">
       <div class="form-row">
         <div class="field"><label for="nome">Nome</label><input id="nome" type="text" required placeholder="Seu nome" /></div>
-        <div class="field"><label for="tel">Telefone</label><input id="tel" type="tel" required placeholder="(21) 9 0000-0000" /></div>
+        <div class="field"><label for="tel">Telefone</label><input id="tel" type="tel" required placeholder="(00) 00000-0000" maxlength="15" oninput="formatPhone(this)" /></div>
       </div>
       <div class="field"><label for="servico">Tipo de serviço</label>
         <select id="servico" required>
@@ -410,8 +410,11 @@
         </select>
       </div>
       <div class="field"><label for="msg">Descreva sua necessidade</label><textarea id="msg" required placeholder="Conte um pouco do que precisa..."></textarea></div>
-      <button type="submit" class="btn btn-primary submit">Enviar pelo WhatsApp →</button>
-      <button type="reset" style="width: 100%; margin-top: 12px; padding: 14px; background: transparent; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; color: var(--muted); font-weight: 600;" onclick="document.getElementById('formMsg').classList.remove('show')">Limpar formulário</button>
+      
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="submit" class="btn btn-primary submit" style="flex: 2;">Enviar pelo WhatsApp →</button>
+        <button type="reset" class="btn btn-ghost" style="flex: 1; border: 1px solid var(--line); color: var(--navy); border-radius: 12px;" onclick="document.getElementById('formMsg').classList.remove('show')">Limpar</button>
+      </div>
       <div class="form-msg" id="formMsg">✓ Redirecionando para o WhatsApp...</div>
     </form>
   </div>
@@ -495,6 +498,15 @@
     setTimeout(() => { window.open(`https://wa.me/5521974701965?text=${text}`, '_blank'); }, 600);
     return false;
   }
+
+  // Phone mask
+  function formatPhone(input) {
+    let value = input.value.replace(/\D/g, '');
+    value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+    value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+    input.value = value;
+  }
 </script>
 </body>
 </html>
+   
